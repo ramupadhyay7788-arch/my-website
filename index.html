@@ -1,0 +1,1451 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moonlit Dreams ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&amp;family=Satisfy&amp;family=Dancing+Script:wght@400;500;600;700&amp;family=Quicksand:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .scene-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .sky-gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                #1a0b2e 0%, 
+                #2d1b4e 20%, 
+                #4a2b6f 40%, 
+                #5e3a7f 60%, 
+                #3d2456 80%,
+                #1a0b2e 100%
+            );
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: starTwinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .clouds {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 192, 255, 0.08);
+            border-radius: 100px;
+            filter: blur(30px);
+            animation: cloudDrift 80s infinite linear;
+        }
+
+        @keyframes cloudDrift {
+            0% { transform: translateX(-10%); }
+            100% { transform: translateX(110%); }
+        }
+
+        .moon {
+            position: absolute;
+            top: 10%;
+            right: 12%;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, 
+                #ffb3d9 0%, 
+                #ff99cc 20%, 
+                #ff80bf 40%, 
+                #ff66b3 60%, 
+                #e64d9e 100%
+            );
+            box-shadow: 
+                0 0 100px rgba(255, 105, 180, 1),
+                0 0 180px rgba(255, 105, 180, 0.8),
+                0 0 260px rgba(255, 105, 180, 0.6),
+                inset -20px -20px 50px rgba(0, 0, 0, 0.3);
+            animation: moonGlow 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes moonGlow {
+            0% { 
+                box-shadow: 
+                    0 0 100px rgba(255, 105, 180, 1),
+                    0 0 180px rgba(255, 105, 180, 0.8),
+                    0 0 260px rgba(255, 105, 180, 0.6),
+                    inset -20px -20px 50px rgba(0, 0, 0, 0.3);
+            }
+            100% { 
+                box-shadow: 
+                    0 0 150px rgba(255, 105, 180, 1),
+                    0 0 250px rgba(255, 105, 180, 0.9),
+                    0 0 350px rgba(255, 105, 180, 0.7),
+                    inset -20px -20px 50px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .lake {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 45%;
+            background: linear-gradient(180deg, 
+                rgba(58, 25, 90, 0.9) 0%, 
+                rgba(38, 15, 65, 0.95) 50%, 
+                rgba(25, 10, 50, 1) 100%
+            );
+            overflow: hidden;
+        }
+
+        .moon-reflection {
+            position: absolute;
+            bottom: 20%;
+            right: 12%;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, 
+                rgba(255, 179, 217, 0.7) 0%, 
+                rgba(255, 153, 204, 0.6) 20%, 
+                rgba(255, 128, 191, 0.5) 40%, 
+                rgba(255, 102, 179, 0.4) 60%, 
+                rgba(230, 77, 158, 0.3) 100%
+            );
+            filter: blur(20px);
+            animation: reflectionWave 6s infinite ease-in-out;
+        }
+
+        @keyframes reflectionWave {
+            0%, 100% { transform: scaleY(1) translateY(0); opacity: 0.7; }
+            50% { transform: scaleY(1.15) translateY(-15px); opacity: 0.9; }
+        }
+
+        .ripples {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ripple {
+            position: absolute;
+            border: 1px solid rgba(255, 192, 255, 0.3);
+            border-radius: 50%;
+            animation: rippleExpand 10s infinite ease-out;
+        }
+
+        @keyframes rippleExpand {
+            0% { width: 30px; height: 15px; opacity: 0.7; }
+            100% { width: 500px; height: 250px; opacity: 0; }
+        }
+
+        .cherry-trees {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .tree-left, .tree-right {
+            position: absolute;
+            bottom: 0;
+            width: 320px;
+            height: 100%;
+        }
+
+        .tree-left {
+            left: -40px;
+        }
+
+        .tree-right {
+            right: -40px;
+            transform: scaleX(-1);
+        }
+
+        .trunk {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 65%;
+            background: linear-gradient(to bottom, 
+                rgba(60, 35, 45, 0.9), 
+                rgba(45, 25, 35, 1)
+            );
+            border-radius: 25px 25px 0 0;
+        }
+
+        .branches {
+            position: absolute;
+            top: 15%;
+            width: 100%;
+            height: 85%;
+        }
+
+        .blossom-cloud {
+            position: absolute;
+            background: radial-gradient(circle, 
+                rgba(255, 192, 255, 0.9) 0%, 
+                rgba(255, 150, 220, 0.7) 50%, 
+                rgba(255, 120, 200, 0.4) 100%
+            );
+            border-radius: 50%;
+            filter: blur(4px);
+        }
+
+        .falling-petals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .petal {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: radial-gradient(ellipse at center, 
+                rgba(255, 192, 255, 0.95) 0%, 
+                rgba(255, 150, 220, 0.8) 50%, 
+                rgba(255, 120, 200, 0.6) 100%
+            );
+            border-radius: 50% 0 50% 0;
+            animation: petalFall 14s infinite ease-in-out;
+        }
+
+        @keyframes petalFall {
+            0% { transform: translateY(-5%) rotate(0deg) translateX(0); opacity: 0.9; }
+            50% { transform: translateY(50%) rotate(180deg) translateX(60px); opacity: 0.7; }
+            100% { transform: translateY(110%) rotate(360deg) translateX(-40px); opacity: 0; }
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(255, 192, 255, 0.9);
+            animation: sparkleFloat 8s infinite ease-in-out;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-120px) scale(1.8); opacity: 0; }
+        }
+
+        .butterflies {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .butterfly {
+            position: absolute;
+            width: 30px;
+            height: 25px;
+            animation: butterflyFly 25s infinite ease-in-out;
+        }
+
+        .butterfly::before,
+        .butterfly::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 18px;
+            background: radial-gradient(ellipse, 
+                rgba(255, 192, 255, 0.9) 0%, 
+                rgba(255, 150, 220, 0.7) 50%, 
+                rgba(255, 120, 200, 0.5) 100%
+            );
+            border-radius: 50%;
+            animation: butterflyWing 0.6s infinite alternate ease-in-out;
+        }
+
+        .butterfly::before {
+            left: 0;
+            transform-origin: right center;
+        }
+
+        .butterfly::after {
+            right: 0;
+            transform-origin: left center;
+        }
+
+        @keyframes butterflyFly {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.9; }
+            90% { opacity: 0.9; }
+            100% { transform: translate(100vw, -90vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes butterflyWing {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(65deg); }
+        }
+
+        .mist {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 35%;
+            background: linear-gradient(to top, 
+                rgba(255, 192, 255, 0.12) 0%, 
+                transparent 100%
+            );
+            filter: blur(25px);
+            animation: mistFlow 18s infinite ease-in-out;
+        }
+
+        @keyframes mistFlow {
+            0%, 100% { opacity: 0.4; transform: translateX(0); }
+            50% { opacity: 0.7; transform: translateX(40px); }
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 11, 46, 0.7);
+            backdrop-filter: blur(25px);
+            border-bottom: 2px solid rgba(255, 192, 255, 0.3);
+            padding: 20px;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(255, 105, 180, 0.3);
+        }
+
+        .instagram-id {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            color: #ffb3d9;
+            text-shadow: 0 0 20px rgba(255, 179, 217, 0.8);
+        }
+
+        .instagram-id a {
+            color: #ffb3d9;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-id a:hover {
+            color: #ff99ff;
+            text-shadow: 0 0 30px rgba(255, 153, 255, 1);
+        }
+
+        .hero-section {
+            padding: 140px 20px 80px;
+            text-align: center;
+        }
+
+        .welcome-title {
+            font-family: 'Parisienne', cursive;
+            font-size: 6rem;
+            background: linear-gradient(135deg, 
+                #ffb3d9 0%, 
+                #ff99ff 25%, 
+                #cc99ff 50%, 
+                #ff99cc 75%, 
+                #ffb3d9 100%
+            );
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: welcomeGradient 8s ease infinite, welcomeGlow 3s ease-in-out infinite alternate;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 40px rgba(255, 153, 255, 0.8));
+        }
+
+        @keyframes welcomeGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes welcomeGlow {
+            0% { filter: drop-shadow(0 0 30px rgba(255, 153, 255, 0.7)); }
+            100% { filter: drop-shadow(0 0 60px rgba(255, 153, 255, 1)); }
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #ffb3d9, #ff99ff, #cc99ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255, 153, 255, 0.6);
+            position: relative;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff99ff, #ffb3d9, transparent);
+            box-shadow: 0 0 20px rgba(255, 153, 255, 0.8);
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(255, 192, 255, 0.3);
+            border-radius: 35px;
+            padding: 60px 50px;
+            text-align: center;
+            box-shadow: 
+                0 10px 50px rgba(255, 105, 180, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 20px 70px rgba(255, 105, 180, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 153, 255, 0.6);
+        }
+
+        .about-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #f5e6ff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .links-grid, .passages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(255, 192, 255, 0.3);
+            border-radius: 30px;
+            padding: 40px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 8px 40px rgba(255, 105, 180, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(135deg, 
+                rgba(255, 179, 217, 0.5), 
+                rgba(204, 153, 255, 0.5), 
+                rgba(255, 153, 255, 0.5)
+            );
+            border-radius: 30px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.5s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 
+                0 25px 70px rgba(255, 105, 180, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .passage-number {
+            font-family: 'Satisfy', cursive;
+            font-size: 2.5rem;
+            color: #ffb3d9;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 179, 217, 0.8);
+        }
+
+        .passage-category {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            color: #ff99ff;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px rgba(255, 153, 255, 0.7);
+        }
+
+        .passage-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #f5e6ff;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .link-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffb3d9;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 179, 217, 0.7);
+        }
+
+        .link-url {
+            color: #cc99ff;
+            font-size: 1rem;
+            word-break: break-all;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px rgba(204, 153, 255, 0.6);
+        }
+
+        .btn {
+            padding: 14px 35px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.7s ease, height 0.7s ease;
+        }
+
+        .btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff99ff, #ff6bcb, #cc66ff);
+            color: white;
+            box-shadow: 0 6px 30px rgba(255, 105, 180, 0.6);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 45px rgba(255, 105, 180, 0.8);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #cc99ff, #9966ff);
+            color: white;
+            box-shadow: 0 6px 30px rgba(153, 102, 255, 0.6);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 45px rgba(153, 102, 255, 0.8);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ff6b9d, #ff3366);
+            color: white;
+            box-shadow: 0 6px 30px rgba(255, 51, 102, 0.6);
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 45px rgba(255, 51, 102, 0.8);
+        }
+
+        .btn-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .like-count {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.1rem;
+            color: #ff99cc;
+            margin-top: 15px;
+            text-shadow: 0 0 10px rgba(255, 153, 204, 0.6);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffb3d9;
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(255, 179, 217, 0.6);
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 18px 25px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 192, 255, 0.3);
+            border-radius: 20px;
+            color: #fff;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.05rem;
+            transition: all 0.4s ease;
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: rgba(245, 230, 255, 0.5);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #ff99ff;
+            box-shadow: 0 0 30px rgba(255, 153, 255, 0.5);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .feedback-list {
+            margin-top: 50px;
+        }
+
+        .feedback-item {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(255, 192, 255, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 30px rgba(255, 105, 180, 0.25);
+        }
+
+        .feedback-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #f5e6ff;
+            margin-bottom: 15px;
+        }
+
+        .feedback-date {
+            font-family: 'Dancing Script', cursive;
+            font-size: 0.95rem;
+            color: #cc99ff;
+            text-align: right;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 80px 20px;
+            margin-top: 120px;
+            position: relative;
+        }
+
+        .footer-signature {
+            font-family: 'Parisienne', cursive;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #ffb3d9, #ff99ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: footerGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes footerGlow {
+            0% { filter: drop-shadow(0 0 15px rgba(255, 153, 255, 0.6)); }
+            100% { filter: drop-shadow(0 0 40px rgba(255, 179, 217, 1)); }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(26, 11, 46, 0.95);
+            backdrop-filter: blur(40px);
+            border: 3px solid rgba(255, 192, 255, 0.5);
+            border-radius: 35px;
+            padding: 50px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 25px 90px rgba(255, 105, 180, 0.6);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffb3d9;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 25px rgba(255, 179, 217, 0.8);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-title {
+                font-size: 4rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .moon {
+                width: 180px;
+                height: 180px;
+                top: 8%;
+                right: 8%;
+            }
+
+            .moon-reflection {
+                width: 140px;
+                height: 140px;
+            }
+
+            .tree-left, .tree-right {
+                width: 220px;
+            }
+
+            .links-grid, .passages-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .about-card {
+                padding: 40px 30px;
+            }
+
+            .glass-card {
+                padding: 30px;
+            }
+
+            .btn-actions {
+                flex-direction: column;
+            }
+
+            .btn-actions .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-title {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .instagram-id {
+                font-size: 1.2rem;
+            }
+
+            .about-text {
+                font-size: 1.1rem;
+            }
+
+            .passage-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="scene-background">
+   <div class="sky-gradient"></div>
+   <div class="stars" id="starsContainer"></div>
+   <div class="clouds" id="cloudsContainer"></div>
+   <div class="moon"></div>
+   <div class="lake">
+    <div class="moon-reflection"></div>
+    <div class="ripples" id="ripplesContainer"></div>
+   </div>
+   <div class="cherry-trees">
+    <div class="tree-left">
+     <div class="trunk"></div>
+     <div class="branches" id="branchesLeft"></div>
+    </div>
+    <div class="tree-right">
+     <div class="trunk"></div>
+     <div class="branches" id="branchesRight"></div>
+    </div>
+   </div>
+   <div class="falling-petals" id="petalsContainer"></div>
+   <div class="sparkles" id="sparklesContainer"></div>
+   <div class="butterflies" id="butterfliesContainer"></div>
+   <div class="mist"></div>
+  </div>
+  <div class="content-wrapper">
+   <header class="fixed-header">
+    <div class="instagram-id">
+     ✨ <a href="https://instagram.com/krish__0522" target="_blank" rel="noopener noreferrer">@krish__0522</a> ✨
+    </div>
+   </header>
+   <section class="hero-section">
+    <h1 class="welcome-title">Welcome</h1>
+   </section>
+   <section class="section">
+    <h2 class="section-title">About This Space 🌸</h2>
+    <div class="about-card">
+     <p class="about-text">Welcome to My World — a place where every word tells a story, every passage is crafted with love, care, and friendship. Explore my universe of thoughts, wishes, and memories. Dive in, feel the vibes, and let every line connect with your heart. Here, it's not just text — it's a journey, a feeling, a connection. Enjoy, explore, and share the love! 💖✨</p>
+    </div>
+   </section>
+   <section class="section" id="linksSection">
+    <h2 class="section-title">✨ My Links</h2>
+    <div class="glass-card" style="margin-bottom: 40px;">
+     <h3 class="modal-title" style="margin-bottom: 30px;">Add New Link</h3>
+     <form id="linkForm">
+      <div class="form-group"><label for="linkTitle" class="form-label">Link Title</label> <input type="text" id="linkTitle" class="form-input" placeholder="e.g., My YouTube Channel" required>
+      </div>
+      <div class="form-group"><label for="linkUrl" class="form-label">URL (HTTPS only)</label> <input type="url" id="linkUrl" class="form-input" placeholder="https://example.com" required>
+      </div>
+      <div class="form-group"><label for="linkPassword" class="form-label">Owner Password</label> <input type="password" id="linkPassword" class="form-input" placeholder="Enter owner password" required>
+      </div><button type="submit" class="btn btn-primary" style="width: 100%;"> <span>🔗 Add Link</span> </button>
+     </form>
+    </div>
+    <h3 class="modal-title" style="margin-bottom: 40px; text-align: center;">📌 Saved Links</h3>
+    <div class="links-grid" id="linksGrid"></div>
+   </section>
+   <section class="section">
+    <h2 class="section-title">💌 Leave Feedback</h2>
+    <div class="glass-card">
+     <form id="feedbackForm">
+      <div class="form-group"><label for="feedbackText" class="form-label">Your Message</label> <textarea id="feedbackText" class="form-textarea" placeholder="Share your thoughts with me..." required></textarea>
+      </div><button type="submit" class="btn btn-primary"> <span>✨ Send Feedback</span> </button>
+     </form>
+    </div>
+    <div class="feedback-list" id="feedbackList"></div>
+   </section>
+   <section class="section">
+    <h2 class="section-title">💖 Beautiful Passages</h2>
+    <div class="passages-grid" id="passagesGrid"></div>
+   </section>
+   <footer class="footer">
+    <div class="footer-signature">
+     Created with love by Krish 💖
+    </div>
+   </footer>
+  </div>
+  <div class="modal" id="passwordSetupModal">
+   <div class="modal-content">
+    <h3 class="modal-title">🔐 Set Owner Password</h3>
+    <p class="about-text" style="text-align: center; margin-bottom: 25px; font-size: 1rem;">Create a password to manage your links. You'll need this to delete links later.</p>
+    <div class="form-group"><label for="setupPassword" class="form-label">Create Password</label> <input type="password" id="setupPassword" class="form-input" placeholder="Choose a strong password" required>
+    </div>
+    <div class="form-group"><label for="confirmPassword" class="form-label">Confirm Password</label> <input type="password" id="confirmPassword" class="form-input" placeholder="Re-enter your password" required>
+    </div><button class="btn btn-primary" id="savePassword" style="width: 100%;"> <span>✨ Set Password</span> </button>
+   </div>
+  </div>
+  <div class="modal" id="deleteModal">
+   <div class="modal-content">
+    <h3 class="modal-title">🔒 Enter Password</h3>
+    <div class="form-group"><label for="deletePassword" class="form-label">Owner Password</label> <input type="password" id="deletePassword" class="form-input" placeholder="Enter owner password">
+    </div>
+    <div class="modal-actions"><button class="btn btn-secondary" id="cancelDelete"> <span>Cancel</span> </button> <button class="btn btn-danger" id="confirmDelete"> <span>Delete</span> </button>
+    </div>
+   </div>
+  </div>
+  <script>
+        const passages = [
+            {id: 1, category: '💖 Love', text: 'In your eyes, I found a galaxy of dreams where every star whispers your name and every constellation spells out our destiny together. You are the poetry my heart has been trying to write since the beginning of time.'},
+            {id: 2, category: '💖 Love', text: 'You make my heart skip beats, my soul sing songs, and my world burst into colors I never knew existed. Loving you is like breathing—effortless, essential, and the only thing that keeps me feeling truly alive.'},
+            {id: 3, category: '💖 Love', text: 'Like the moon loves the night sky, I love you with a gentle glow that never fades. You turned my ordinary world into an extraordinary fairytale where every moment feels like magic dancing through my soul.'},
+            {id: 4, category: '💖 Love', text: 'Every love song makes sense now because I finally understand what it means to love someone with every fiber of my being. You are my favorite chapter in the book of life, the melody in my heart\'s symphony.'},
+            {id: 5, category: '💖 Love', text: 'I never believed in soulmates until I met you. Now I know that some connections are written in the stars, destined by fate, and blessed by the universe. You are my always and forever.'},
+            {id: 6, category: '💖 Love', text: 'Your love is the sunrise that brightens my darkest days, the anchor that keeps me grounded, and the wings that help me fly. With you, I\'ve found home in a person, not a place.'},
+            {id: 7, category: '💖 Love', text: 'They say love is blind, but with you, I see everything clearly for the first time. I see a future full of laughter, a present full of joy, and a love that transcends time itself.'},
+            {id: 8, category: '💖 Love', text: 'In a world full of temporary things, you are my forever feeling. You\'re the dream I never want to wake up from, the wish I made on every shooting star that finally came true.'},
+            {id: 9, category: '💖 Love', text: 'Loving you is my favorite adventure. It\'s the butterflies that never go away, the comfort that feels like home, and the excitement that keeps every day feeling brand new.'},
+            {id: 10, category: '💖 Love', text: 'You are the reason I believe in love stories. Not the fairytale kind, but the real kind—the beautiful, messy, perfectly imperfect kind that lasts forever. You complete me in ways I never knew I was incomplete.'},
+            {id: 11, category: '💕 Care', text: 'I care about you in ways words can never fully express. Your happiness is my peace, your smile is my sunshine, and your well-being is my greatest priority. You matter more than you know.'},
+            {id: 12, category: '💕 Care', text: 'I want you to know that you\'re never alone. In your darkest moments, I\'ll be your light. In your storms, I\'ll be your shelter. In your joy, I\'ll celebrate with you. I care about you, always.'},
+            {id: 13, category: '💕 Care', text: 'Your well-being matters to me more than you realize. When you hurt, I hurt. When you smile, I smile. I\'m always here for you—to listen without judgment, to support without conditions, to care without limits.'},
+            {id: 14, category: '💕 Care', text: 'I care about you not because I have to, but because my heart chose you. Your struggles are mine, your victories are mine, and your happiness means everything to me.'},
+            {id: 15, category: '💕 Care', text: 'When the world feels heavy and life gets tough, remember that I care deeply about you. I\'m here to hold your hand, wipe your tears, and remind you how incredibly special you are.'},
+            {id: 16, category: '💕 Care', text: 'Caring for you comes naturally to me. It\'s in the little things—the check-ins, the thoughtful gestures, the way I always want the best for you. You deserve all the love and care this world has to offer.'},
+            {id: 17, category: '💕 Care', text: 'I care about your dreams as if they were my own. I celebrate your wins and stand by you through losses. Your journey matters to me because you matter to me.'},
+            {id: 18, category: '💕 Care', text: 'Please take care of yourself the way you take care of others. You pour so much love into the world—don\'t forget to save some for yourself. I care about you and your wellbeing deeply.'},
+            {id: 19, category: '💕 Care', text: 'I care enough to ask how you\'re really doing, to notice when something\'s wrong, and to be there even when it\'s inconvenient. Because caring for you is never a burden—it\'s a privilege.'},
+            {id: 20, category: '💕 Care', text: 'My care for you is unconditional. It doesn\'t waver with distance or time. It doesn\'t depend on what you can do for me. I care because you exist, and that\'s enough.'},
+            {id: 21, category: '🌟 Friendship', text: 'True friends are like stars—you don\'t always see them, but you know they\'re always shining for you. Thank you for being the friend who stays when everyone else leaves, who listens when others ignore.'},
+            {id: 22, category: '🌟 Friendship', text: 'Our friendship is a garden where laughter blooms, memories grow, and love is planted deep in the soil of forever. Distance means nothing when friendship means everything to us.'},
+            {id: 23, category: '🌟 Friendship', text: 'Friendship isn\'t about who you\'ve known the longest. It\'s about who walked into your life and said "I\'m here for you" and actually proved it. That\'s you, and I\'m forever grateful.'},
+            {id: 24, category: '🌟 Friendship', text: 'A true friend sees the pain in your eyes while everyone else believes the smile on your face. Thank you for always seeing the real me and loving me anyway.'},
+            {id: 25, category: '🌟 Friendship', text: 'Friends come and go like waves of the ocean, but true friends stay like footprints in the sand. You\'ve left permanent marks on my heart, and I wouldn\'t have it any other way.'},
+            {id: 26, category: '🌟 Friendship', text: 'In the story of my life, you\'re my favorite chapter. In the playlist of my heart, you\'re my favorite song. In the journey of friendship, you\'re my favorite companion. Thank you for being you.'},
+            {id: 27, category: '🌟 Friendship', text: 'Good friends are like stars—you don\'t always see them, but they\'re always there. Great friends are like guardian angels—invisible but always watching over you. You\'re my guardian angel.'},
+            {id: 28, category: '🌟 Friendship', text: 'Life is better with true friends by your side. Through ups and downs, laughter and tears, you\'ve been my constant. Here\'s to a friendship that time and distance can never break.'},
+            {id: 29, category: '🌟 Friendship', text: 'Friendship is when people know all about you but love you anyway. It\'s the comfort of being yourself without pretense. Thank you for giving me that safe space where I can just be me.'},
+            {id: 30, category: '🌟 Friendship', text: 'Some people arrive and make such a beautiful impact on your life that you can barely remember what life was like without them. You\'re one of those people, and I\'m blessed to call you my friend.'},
+            {id: 31, category: '💝 Best Friend', text: 'You\'re not just my best friend, you\'re my chosen family. The one who knows all my secrets, shares all my dreams, and makes every ordinary moment feel like an extraordinary adventure.'},
+            {id: 32, category: '💝 Best Friend', text: 'Best friends are the family we choose for ourselves. You\'re my confidant, my partner in crime, my shoulder to cry on, and my reason to laugh. Life is so much better with you in it.'},
+            {id: 33, category: '💝 Best Friend', text: 'A best friend is someone who loves you when you forget to love yourself, who sees your worth when you feel worthless, who holds you together when you\'re falling apart. You\'re that person for me.'},
+            {id: 34, category: '💝 Best Friend', text: 'We\'ve been through so much together—tears and laughter, failures and successes, heartbreaks and celebrations. Through it all, one thing remained constant: our friendship. You\'re my forever best friend.'},
+            {id: 35, category: '💝 Best Friend', text: 'Best friends don\'t judge you for your past. They accept your present and believe in your future. Thank you for being the one who always has faith in me, even when I don\'t.'},
+            {id: 36, category: '💝 Best Friend', text: 'Having a best friend like you is like having a piece of childhood that never fades. We can be silly, serious, adventurous, and lazy—all in the same day. That\'s the magic of our friendship.'},
+            {id: 37, category: '💝 Best Friend', text: 'You know those friends who feel more like siblings? That\'s you. We fight, we laugh, we share secrets, and we\'d do anything for each other. I won the lottery when I found you.'},
+            {id: 38, category: '💝 Best Friend', text: 'Best friends are the ones who bring out the best in you, who challenge you to grow, who celebrate your successes like their own. You make me want to be better every single day.'},
+            {id: 39, category: '💝 Best Friend', text: 'A best friend is a treasure more valuable than gold. They\'re rare, precious, and irreplaceable. I treasure our friendship and everything you bring into my life. You\'re one of a kind.'},
+            {id: 40, category: '💝 Best Friend', text: 'We don\'t need to talk every day or see each other all the time. Our friendship doesn\'t need constant attention because it\'s built on a foundation so strong that time and distance can\'t shake it. You\'re my forever best friend.'},
+            {id: 41, category: '✨ Bestie', text: 'To my soul sister: we\'ll be besties forever because you already know too much! Thank you for understanding my weirdness, accepting my flaws, and loving me through every single season of life.'},
+            {id: 42, category: '✨ Bestie', text: 'We\'re the kind of besties who can communicate with just one look, who laugh at inside jokes no one else understands, and who make the best memories out of the simplest moments. Forever my favorite human!'},
+            {id: 43, category: '✨ Bestie', text: 'Bestie, you\'re the peanut butter to my jelly, the cheese to my macaroni, the lyrics to my song. We just fit perfectly together, and I wouldn\'t want to do life with anyone else by my side.'},
+            {id: 44, category: '✨ Bestie', text: 'Real besties don\'t get jealous when you make other friends. They\'re happy you\'re making connections but secretly relieved no one could ever replace them. That\'s us, and that\'s forever.'},
+            {id: 45, category: '✨ Bestie', text: 'A true bestie is someone you can call at 3 AM with a crazy idea or a broken heart, and they\'ll answer every time. Thank you for being my 3 AM person, no matter what.'},
+            {id: 46, category: '✨ Bestie', text: 'We\'re besties because we\'ve seen each other at our best and worst, and we still choose each other every single time. That\'s the kind of loyalty money can\'t buy and time can\'t break.'},
+            {id: 47, category: '✨ Bestie', text: 'To my bestie: you make the good times better and the hard times easier. You turn ordinary days into adventures and bad days into bearable ones. Life with you is simply better.'},
+            {id: 48, category: '✨ Bestie', text: 'Bestie goals: growing old together, embarrassing each other\'s kids with stories from our youth, and still laughing at the same dumb jokes when we\'re 80. Here\'s to forever friendship!'},
+            {id: 49, category: '✨ Bestie', text: 'They say you can\'t choose your family, but you can choose your friends. I chose you as my bestie, and it\'s the best decision I\'ve ever made. You\'re family to me, through and through.'},
+            {id: 50, category: '✨ Bestie', text: 'Bestie, we\'ve created a language only we understand—the inside jokes, the secret codes, the meaningful glances. Our friendship is our own little universe, and I never want to leave it.'},
+            {id: 51, category: '🎂 Birthday', text: 'Happy Birthday to someone who lights up every room they enter! May your special day be filled with endless joy, magical moments, sweet surprises, and all the love your beautiful heart deserves. ✨🎉'},
+            {id: 52, category: '🎂 Birthday', text: 'Wishing you a birthday as incredible as you are! May this year bring you closer to your dreams, fill your days with laughter, surround you with love, and create memories you\'ll treasure forever. 🎁💖'},
+            {id: 53, category: '🎂 Birthday', text: 'On your birthday, I wish you endless happiness, boundless love, incredible adventures, and dreams that come true. You deserve all the beautiful things life has to offer. Celebrate big today! 🎊✨'},
+            {id: 54, category: '🎂 Birthday', text: 'Happy Birthday to the one who makes every day brighter! May your year ahead be filled with success, health, prosperity, and countless reasons to smile. Today, we celebrate YOU! 🎈💝'},
+            {id: 55, category: '🎂 Birthday', text: 'Another year older, wiser, and more amazing! Happy Birthday! May this special day bring you everything your heart desires and more. Here\'s to making this your best year yet! 🎉🌟'},
+            {id: 56, category: '🎂 Birthday', text: 'Happy Birthday to someone truly special! May your day be as wonderful as you are, filled with love from those who cherish you, laughter that fills your soul, and joy that lasts all year long! 🎂💕'},
+            {id: 57, category: '🎂 Birthday', text: 'Today, we celebrate the day the world became a better place—the day you were born! Happy Birthday! May your life be filled with endless blessings, unforgettable moments, and infinite happiness! 🎁✨'},
+            {id: 58, category: '🎂 Birthday', text: 'Happy Birthday! May every candle on your cake represent a wish that comes true, a dream that\'s realized, and a blessing that multiplies. You deserve the absolute best today and always! 🕯️💖'},
+            {id: 59, category: '🎂 Birthday', text: 'Wishing you a birthday filled with sweet moments and wonderful memories! May this year bring new opportunities, exciting adventures, beautiful surprises, and all the happiness your heart can hold! 🎊🌸'},
+            {id: 60, category: '🎂 Birthday', text: 'Happy Birthday to an extraordinary person! May your special day be just the beginning of a year filled with happy memories, wonderful moments, and all the success you\'ve been dreaming of! 🎉💫'}
+        ];
+
+        let ownerPassword = localStorage.getItem('moonlitOwnerPassword') || 'krish_69';
+        if (!localStorage.getItem('moonlitOwnerPassword')) {
+            localStorage.setItem('moonlitOwnerPassword', 'krish_69');
+        }
+        let links = JSON.parse(localStorage.getItem('moonlitLinks') || '[]');
+        let feedbacks = JSON.parse(localStorage.getItem('moonlitFeedbacks') || '[]');
+        let likes = JSON.parse(localStorage.getItem('moonlitLikes') || '{}');
+        let itemToDelete = null;
+
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 70}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                star.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                container.appendChild(star);
+            }
+        }
+
+        function createClouds() {
+            const container = document.getElementById('cloudsContainer');
+            for (let i = 0; i < 10; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'cloud';
+                const width = Math.random() * 350 + 250;
+                const height = Math.random() * 100 + 80;
+                cloud.style.width = `${width}px`;
+                cloud.style.height = `${height}px`;
+                cloud.style.left = `${Math.random() * 100}%`;
+                cloud.style.top = `${Math.random() * 60}%`;
+                cloud.style.animationDelay = `${Math.random() * 80}s`;
+                cloud.style.animationDuration = `${Math.random() * 60 + 70}s`;
+                container.appendChild(cloud);
+            }
+        }
+
+        function createRipples() {
+            const container = document.getElementById('ripplesContainer');
+            for (let i = 0; i < 6; i++) {
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple';
+                ripple.style.left = `${Math.random() * 100}%`;
+                ripple.style.bottom = `${Math.random() * 70}%`;
+                ripple.style.animationDelay = `${i * 1.8}s`;
+                container.appendChild(ripple);
+            }
+        }
+
+        function createBlossoms() {
+            const positions = [
+                { left: 15, top: 25, size: 100 },
+                { left: 35, top: 30, size: 90 },
+                { left: 55, top: 35, size: 95 },
+                { left: 30, top: 45, size: 85 },
+                { left: 50, top: 50, size: 90 },
+                { left: 40, top: 60, size: 100 },
+                { left: 20, top: 55, size: 80 }
+            ];
+
+            ['branchesLeft', 'branchesRight'].forEach(id => {
+                const container = document.getElementById(id);
+                positions.forEach(pos => {
+                    const blossom = document.createElement('div');
+                    blossom.className = 'blossom-cloud';
+                    blossom.style.width = `${pos.size}px`;
+                    blossom.style.height = `${pos.size}px`;
+                    blossom.style.left = `${pos.left}%`;
+                    blossom.style.top = `${pos.top}%`;
+                    container.appendChild(blossom);
+                });
+            });
+        }
+
+        function createPetals() {
+            const container = document.getElementById('petalsContainer');
+            for (let i = 0; i < 35; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = `${Math.random() * 100}%`;
+                petal.style.animationDelay = `${Math.random() * 14}s`;
+                petal.style.animationDuration = `${Math.random() * 10 + 12}s`;
+                container.appendChild(petal);
+            }
+        }
+
+        function createSparkles() {
+            const container = document.getElementById('sparklesContainer');
+            for (let i = 0; i < 50; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.bottom = `${Math.random() * 100}%`;
+                sparkle.style.animationDelay = `${Math.random() * 8}s`;
+                sparkle.style.animationDuration = `${Math.random() * 5 + 7}s`;
+                container.appendChild(sparkle);
+            }
+        }
+
+        function createButterflies() {
+            const container = document.getElementById('butterfliesContainer');
+            for (let i = 0; i < 8; i++) {
+                const butterfly = document.createElement('div');
+                butterfly.className = 'butterfly';
+                butterfly.style.left = `-5%`;
+                butterfly.style.bottom = `${Math.random() * 70 + 15}%`;
+                butterfly.style.animationDelay = `${i * 3.5}s`;
+                butterfly.style.animationDuration = `${Math.random() * 15 + 20}s`;
+                container.appendChild(butterfly);
+            }
+        }
+
+        function renderPassages() {
+            const container = document.getElementById('passagesGrid');
+            container.innerHTML = '';
+
+            passages.forEach(passage => {
+                const likeCount = likes[passage.id] || 0;
+                const card = document.createElement('div');
+                card.className = 'glass-card';
+                card.innerHTML = `
+                    <div class="passage-number">#${passage.id}</div>
+                    <div class="passage-category">${passage.category}</div>
+                    <div class="passage-text">${passage.text}</div>
+                    <div class="btn-actions">
+                        <button class="btn btn-primary" onclick="copyPassage(${passage.id})">
+                            <span>📋 Copy</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="likePassage(${passage.id})">
+                            <span>💖 Like</span>
+                        </button>
+                    </div>
+                    <div class="like-count">💕 ${likeCount} likes</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderLinks() {
+            const container = document.getElementById('linksGrid');
+            
+            if (links.length === 0) {
+                container.innerHTML = '<div class="glass-card"><p class="about-text" style="text-align: center;">No links yet. Add your first one above! ✨</p></div>';
+                return;
+            }
+
+            container.innerHTML = '';
+            links.forEach(link => {
+                const card = document.createElement('div');
+                card.className = 'glass-card';
+                card.innerHTML = `
+                    <div class="link-title">${link.title}</div>
+                    <div class="link-url">${link.url}</div>
+                    <div class="btn-actions">
+                        <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <span>👁️ Open Link</span>
+                        </a>
+                        <button class="btn btn-danger" onclick="initiateDeleteLink('${link.id}')">
+                            <span>🗑️ Delete</span>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderFeedbacks() {
+            const container = document.getElementById('feedbackList');
+            
+            if (feedbacks.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = '';
+            feedbacks.slice().reverse().forEach(feedback => {
+                const item = document.createElement('div');
+                item.className = 'feedback-item';
+                item.innerHTML = `
+                    <div class="feedback-text">${feedback.text}</div>
+                    <div class="feedback-date">${feedback.date}</div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function copyPassage(id) {
+            const passage = passages.find(p => p.id === id);
+            if (!passage) return;
+
+            const textToCopy = passage.text;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showToast('💖 Copied to clipboard!');
+                }).catch(() => {
+                    fallbackCopy(textToCopy);
+                });
+            } else {
+                fallbackCopy(textToCopy);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast('💖 Copied to clipboard!');
+            } catch (err) {
+                showToast('❌ Unable to copy');
+            }
+            
+            document.body.removeChild(textarea);
+        }
+
+        function likePassage(id) {
+            likes[id] = (likes[id] || 0) + 1;
+            localStorage.setItem('moonlitLikes', JSON.stringify(likes));
+            renderPassages();
+            showToast('💕 Liked!');
+        }
+
+        document.getElementById('savePassword').addEventListener('click', () => {
+            const password = document.getElementById('setupPassword').value;
+            const confirm = document.getElementById('confirmPassword').value;
+
+            if (!password || password.length < 4) {
+                showToast('❌ Password must be at least 4 characters');
+                return;
+            }
+
+            if (password !== confirm) {
+                showToast('❌ Passwords do not match');
+                return;
+            }
+
+            ownerPassword = password;
+            localStorage.setItem('moonlitOwnerPassword', password);
+            document.getElementById('passwordSetupModal').classList.remove('active');
+            showToast('✅ Password set successfully!');
+        });
+
+        document.getElementById('linkForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('linkTitle').value.trim();
+            const url = document.getElementById('linkUrl').value.trim();
+            const password = document.getElementById('linkPassword').value;
+
+            if (!password) {
+                showToast('❌ Please enter password');
+                return;
+            }
+
+            if (password !== ownerPassword) {
+                showToast('❌ Incorrect password');
+                return;
+            }
+
+            if (!url.startsWith('https://')) {
+                showToast('❌ URL must start with https://');
+                return;
+            }
+
+            const newLink = {
+                id: Date.now().toString(),
+                title: title,
+                url: url
+            };
+
+            links.push(newLink);
+            localStorage.setItem('moonlitLinks', JSON.stringify(links));
+            renderLinks();
+            document.getElementById('linkForm').reset();
+            showToast('🔗 Link added successfully!');
+        });
+
+        document.getElementById('feedbackForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const text = document.getElementById('feedbackText').value.trim();
+            
+            const newFeedback = {
+                id: Date.now().toString(),
+                text: text,
+                date: new Date().toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                })
+            };
+
+            feedbacks.push(newFeedback);
+            localStorage.setItem('moonlitFeedbacks', JSON.stringify(feedbacks));
+            renderFeedbacks();
+            document.getElementById('feedbackForm').reset();
+            showToast('💌 Feedback sent! Thank you!');
+        });
+
+        function initiateDeleteLink(id) {
+            itemToDelete = id;
+            document.getElementById('deleteModal').classList.add('active');
+            document.getElementById('deletePassword').value = '';
+        }
+
+        document.getElementById('cancelDelete').addEventListener('click', () => {
+            document.getElementById('deleteModal').classList.remove('active');
+            itemToDelete = null;
+        });
+
+        document.getElementById('confirmDelete').addEventListener('click', () => {
+            const password = document.getElementById('deletePassword').value;
+
+            if (!ownerPassword) {
+                showToast('❌ Owner password not set');
+                document.getElementById('deleteModal').classList.remove('active');
+                return;
+            }
+
+            if (password !== ownerPassword) {
+                showToast('❌ Incorrect password');
+                return;
+            }
+
+            links = links.filter(l => l.id !== itemToDelete);
+            localStorage.setItem('moonlitLinks', JSON.stringify(links));
+            renderLinks();
+            document.getElementById('deleteModal').classList.remove('active');
+            itemToDelete = null;
+            showToast('✅ Link deleted successfully!');
+        });
+
+        function showToast(message) {
+            const existingToast = document.querySelector('.toast-notification');
+            if (existingToast) existingToast.remove();
+
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.style.cssText = `
+                position: fixed;
+                top: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 20px 45px;
+                background: linear-gradient(135deg, rgba(255, 153, 255, 0.95), rgba(255, 105, 180, 0.95));
+                backdrop-filter: blur(25px);
+                border: 2px solid rgba(255, 255, 255, 0.4);
+                border-radius: 30px;
+                color: white;
+                font-family: 'Quicksand', sans-serif;
+                font-size: 1.1rem;
+                font-weight: 700;
+                box-shadow: 0 10px 40px rgba(255, 105, 180, 0.7);
+                z-index: 10000;
+                animation: toastSlide 0.4s ease;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function init() {
+            createStars();
+            createClouds();
+            createRipples();
+            createBlossoms();
+            createPetals();
+            createSparkles();
+            createButterflies();
+            renderPassages();
+            renderLinks();
+            renderFeedbacks();
+        }
+
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ab25607f75047d5',t:'MTc2NTI2MDU5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
